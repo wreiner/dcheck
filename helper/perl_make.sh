@@ -1,0 +1,17 @@
+#!/bin/sh
+
+BASEDIR=/usr/local/dcheck/
+
+export PERL5LIB=${BASEDIR}
+perl Makefile.PL \
+    PREFIX=${BASEDIR} \
+    INSTALLPRIVLIB=${BASEDIR}/perllib \
+    INSTALLSCRIPT=${BASEDIR}/bin \
+    INSTALLSITELIB=${BASEDIR}/perllib \
+    INSTALLBIN=${BASEDIR}/bin \
+    INSTALLMAN1DIR=${BASEDIR}/man/man1 \
+    INSTALLSITEMAN1DIR=${BASEDIR}/man/man1 \
+    INSTALLMAN3DIR=${BASEDIR}/man/man3 \
+    INSTALLSITEMAN3DIR=${BASEDIR}/man/man3 \
+    INSTALLSITEARCH=${BASEDIR}/perllib \
+    INSTALLARCHLIB=${BASEDIR}/perllib
