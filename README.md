@@ -46,9 +46,9 @@ dcheck is configured via *etc/dcheck.conf*. Check this file for more information
 Manual running dcheck
 ---------------------
 
-dcheck only knows one command line parameter: **-s <stripname>**.
+dcheck only knows one command line parameter: **-s stripname**.
 
-If invoked with **-s <stripname>** dcheck only performs the task necessary for this strip.
+If invoked with **-s stripname** dcheck only performs the task necessary for this strip.
 
 It's especially useful for debugging.
 
