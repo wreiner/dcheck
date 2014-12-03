@@ -69,3 +69,12 @@ It would be too much hassle to implement a user registration by myself, so I jus
 
 Probably the best way would be to setup a small Mailman installation and send the strips to the according lists, so Mailman handles the user stuffs.
 
+Planned improvements
+--------------------
+
+If there is time the following improvements are planned:
+
+* Using modules::Pluggable to build a plugin system for strips
+* Replace cli md5sum with Digest::MD5
+* Code cleanup
+
