@@ -8,6 +8,7 @@ use LWP::UserAgent;
 use MIME::Lite;
 use XML::RSS::Parser::Lite;
 use Data::Dumper;
+use HTML::Entities;
 
 use strict;
 
@@ -87,7 +88,7 @@ sub get_latest_url_from_rss
         my $xml = $response->content;
         my $rp = new XML::RSS::Parser::Lite;
         $rp->parse($xml);
-                
+
         #print $rp->get('title') . " " . $rp->get('url') . " " . $rp->get('description') . "\n";
 
         # we only need the first entry aka THE LATEST
@@ -116,11 +117,11 @@ sub download_image
     my @ergs;
     if ($response->is_success) {
         my $resp = $response->content;
-        
+
         open(OUTF, ">$tmpfile") or die "cannot open $tmpfile - $!";
         print OUTF "$resp";
         close(OUTF);
-        
+
     } else {
         logging('error', "download_image: cannot connect to url: " . $response->status_line);
         return(0);
@@ -177,7 +178,7 @@ sub getDate
     return($date);
 }
 
-sub logging 
+sub logging
 {
     my ($priority, $msg) = @_;
     return unless defined $msg;
@@ -325,16 +326,16 @@ sub main
 
         my $msgtxt = "";
         if (defined $alt) {
-            $msgtxt .= "-= $alt -=\n\n";
+            $msgtxt .= sprintf("-= %s -=\n\n", decode_entities($alt));
         }
 
         if (defined $title) {
-            $msgtxt .= "$title\n";
+            $msgtxt .= sprintf("%s\n", decode_entities($title));
         }
 
         if (!($img_otd =~ /http:/)) {
             $url = $config{strip}->{$strip}->{url};
-            
+
             # new dilbert fast url hack
             $url =~ s/\/fast//;
 
