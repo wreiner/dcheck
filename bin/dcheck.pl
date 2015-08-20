@@ -333,8 +333,8 @@ sub main
             $msgtxt .= sprintf("%s\n", decode_entities($title));
         }
 
-        # explosm comic url fix
-        if ($config{strip}->{$strip}->{type} eq 'explosm') {
+        # comic url fix
+        if ($config{strip}->{$strip}->{type} eq 'explosm' or $config{strip}->{$strip}->{type} eq 'xkcd') {
             $img_otd = "http://$img_otd";
         }
 
